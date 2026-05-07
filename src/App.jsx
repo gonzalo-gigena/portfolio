@@ -489,7 +489,7 @@ function Contact() {
       <div className="contact-grid">
         <div className="contact-links">
           <a href="mailto:gonzalo.gigena.alvarez@gmail.com">gonzalo.gigena.alvarez@gmail.com<span className="arr">↗</span></a>
-          <a href="#">linkedin / in/gonzalogigena<span className="arr">↗</span></a>
+          <a href="#">linkedin / in/gonzalo-gigena<span className="arr">↗</span></a>
         </div>
         <div className="contact-blurb">
           <p>
