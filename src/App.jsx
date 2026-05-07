@@ -440,41 +440,6 @@ function Experience() {
   )
 }
 
-const POSTS = [
-  { date: "04.18.2026", read: "8 min", title_a: "teaching", title_s: "an EVM ", title_p: "to behave", body: "notes on integrating the nexus chain with a node backend without losing your mind (or your gas)." },
-  { date: "02.02.2026", read: "5 min", title_a: "satellites", title_s: " and ", title_p: "synthetic data", body: "what i learned generating fake space photos in unity for my thesis. mostly: lighting is hard." },
-  { date: "11.30.2025", read: "12 min", title_a: "the ", title_s: "quiet death ", title_p: "of icpc brain", body: "competitive programming gave me reflexes i no longer use. here's what i kept." },
-  { date: "08.15.2025", read: "6 min", title_a: "rust ", title_s: "isn't", title_p: " hard, you are", body: "(i am.) a self-roast in four lifetimes." },
-]
-
-function Writing() {
-  return (
-    <section className="section writing" id="writing">
-      <span className="section-label">/ writing</span>
-      <h2>
-        <span className="a">notes</span>{" "}
-        <span className="s">from</span>{" "}
-        <span className="p">the</span>{" "}
-        <span className="a">terminal</span>.
-      </h2>
-      <div className="posts">
-        {POSTS.map((p, i) => (
-          <article className="post" key={i}>
-            <div className="meta"><span>{p.date}</span><span>{p.read}</span></div>
-            <h3>
-              <span className="a">{p.title_a}</span>
-              <span className="s">{p.title_s}</span>
-              <span className="p">{p.title_p}</span>
-            </h3>
-            <p>{p.body}</p>
-            <div className="read">read it <span className="arrow">→</span></div>
-          </article>
-        ))}
-      </div>
-    </section>
-  )
-}
-
 function Contact() {
   return (
     <section className="contact" id="contact">
@@ -526,7 +491,6 @@ function Topbar() {
       <nav>
         <a href="#now">now</a>
         <a href="#experience">work</a>
-        <a href="#writing">writing</a>
         <a href="#contact">contact</a>
       </nav>
       <div style={{ opacity: 0.7 }}>{time} · cba/ar</div>
@@ -556,7 +520,6 @@ export default function App() {
         <div className="glitch-divider" />
         <Experience />
         <div className="glitch-divider" />
-        <Writing />
         <Contact />
         <Footer />
       </main>
