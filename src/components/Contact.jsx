@@ -1,33 +1,56 @@
+import { Reveal } from './Reveal.jsx'
+
 export function Contact() {
   return (
     <section className="contact" id="contact">
-      <span className="section-label">/ contact</span>
-      <h2>
-        <span className="a">say</span>{" "}
-        <span className="s">hi,</span>{" "}
-        <span className="p">don&apos;t</span>{" "}
-        <span className="strike s">be</span>{" "}
-        <span className="a">weird</span>.
-      </h2>
-      <div className="contact-grid">
-        <div className="contact-links">
-          <a href="mailto:gonzalo.gigena.alvarez@gmail.com">gonzalo.gigena.alvarez@gmail.com<span className="arr">↗</span></a>
-          <a href="#">linkedin / in/gonzalo-gigena<span className="arr">↗</span></a>
+      <Reveal className="tg-card" tilt>
+        <div className="tg-head">
+          <div>telegram · cba/ar → world</div>
+          <div className="center">— urgent transmission —</div>
+          <div className="right">no. 0426 · prepaid</div>
         </div>
-        <div className="contact-blurb">
-          <p>
-            i reply faster than my <span className="p">git push</span>.{" "}
-            mornings are for code, evenings are for <span className="m">// thinking</span>.
-          </p>
-          <p style={{ marginTop: 12 }}>
-            three languages: <span className="p">es / en / de</span>.{" "}
-            two coffees a day. one cat (allegedly).
-          </p>
-          <p style={{ marginTop: 12, fontFamily: "Space Mono, monospace", fontStyle: "normal", fontSize: 13 }}>
-            psst — try ↑ ↑ ↓ ↓ ← → ← → b a
-          </p>
+        <div className="tg-body">
+          <div className="tg-msg">
+            <span className="b">to:</span> any reader of this paper{" "}
+            <span className="stop">stop</span><br />
+            <span className="b">from:</span> g. gigena, córdoba{" "}
+            <span className="stop">stop</span><br />
+            <span className="hl">say hi</span>{" "}
+            <span className="stop">stop</span>{" "}
+            don&apos;t be weird{" "}
+            <span className="stop">stop</span><br />
+            mornings for code{" "}
+            <span className="stop">stop</span>{" "}
+            evenings for{" "}
+            <span style={{ fontFamily: "VT323, monospace", textTransform: "none", letterSpacing: 0, color: "#a64a3a", fontSize: 22 }}>// thinking</span>{" "}
+            <span className="stop">stop</span><br />
+            three languages — es, en, de{" "}
+            <span className="stop">stop</span>{" "}
+            two coffees a day{" "}
+            <span className="stop">stop</span>{" "}
+            one cat (allegedly){" "}
+            <span className="stop">stop</span><br />
+            <span className="b">end of message</span>{" "}
+            <span className="stop">stop</span>
+          </div>
+          <div className="tg-links">
+            <div className="label">→ direct lines</div>
+            <a href="mailto:gonzalo.gigena.alvarez@gmail.com">email<span className="arr">↗</span></a>
+            <a href="#">github<span className="arr">↗</span></a>
+            <a href="#">linkedin<span className="arr">↗</span></a>
+            <a href="#">read.cv<span className="arr">↗</span></a>
+            <a href="tel:REDACTED">REDACTED<span className="arr">↗</span></a>
+            <div style={{ marginTop: 16, fontFamily: "Special Elite, monospace", fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", opacity: 0.7 }}>
+              psst — try ↑ ↑ ↓ ↓ ← → ← → b a
+            </div>
+          </div>
         </div>
-      </div>
+        <div className="tg-foot">
+          <span>filed: 05/08/2026 · 10:42 art</span>
+          <span className="stamp ink">authentic</span>
+          <span>operator: gg-001</span>
+        </div>
+      </Reveal>
     </section>
   )
 }

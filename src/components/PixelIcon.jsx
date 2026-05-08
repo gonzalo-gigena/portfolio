@@ -97,6 +97,18 @@ export const ICON_GRIDS = {
     "X.X....X.X",
     "XXXXXXXXXX",
   ],
+  pin: [
+    ".XXXXX....",
+    ".X...X....",
+    ".X...X....",
+    "XXXXXXX...",
+    "...X......",
+    "...X......",
+    "...X......",
+    "...X......",
+    "..........",
+    "..........",
+  ],
 }
 
 export function PixelIcon({ kind = "diamond", size = 32, color = "#a64a3a" }) {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export function Sticker({ initial, rotate = 0, zIndex = 1, children }) {
+export function Sticker({ initial, rotate = 0, zIndex = 1, tape = "top", children }) {
   const [pos, setPos] = useState(initial)
   const [drag, setDrag] = useState(null)
   const [z, setZ] = useState(zIndex)
@@ -38,6 +38,7 @@ export function Sticker({ initial, rotate = 0, zIndex = 1, children }) {
       onMouseDown={onDown}
       onTouchStart={onDown}
     >
+      {tape && <div className={`tape ${tape}`} />}
       {children}
     </div>
   )

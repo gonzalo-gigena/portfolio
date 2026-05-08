@@ -13,9 +13,7 @@ export function MarqueeBar() {
   )
   return (
     <div className="marquee">
-      <div className="marquee-track">
-        {items}{items}{items}
-      </div>
+      <div className="marquee-track">{items}{items}{items}</div>
     </div>
   )
 }
