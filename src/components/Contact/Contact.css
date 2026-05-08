@@ -1,0 +1,118 @@
+.contact {
+  background: var(--brick);
+  color: var(--bone);
+  padding: 80px 24px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(45deg, transparent 0 18px, rgba(232,226,211,0.05) 18px 19px);
+  pointer-events: none;
+}
+.tg-card {
+  position: relative;
+  z-index: 2;
+  background: var(--paper);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  box-shadow: 14px 14px 0 var(--ink);
+  padding: 28px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.tg-head {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  align-items: center;
+  border-bottom: 3px double var(--ink);
+  padding-bottom: 12px;
+  font-family: "Special Elite", "Courier Prime", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.tg-head .center {
+  text-align: center;
+  font-family: "DM Serif Display", serif;
+  font-size: 18px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.tg-head .right { text-align: right; }
+
+.tg-body {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 32px;
+}
+.tg-msg {
+  font-family: "Special Elite", "Courier Prime", monospace;
+  font-size: 18px;
+  line-height: 1.55;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.tg-msg .stop {
+  font-family: "Archivo Black", sans-serif;
+  background: var(--ink);
+  color: var(--punk);
+  padding: 0 6px;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  vertical-align: 2px;
+}
+.tg-msg .hl { background: var(--punk); padding: 0 4px; }
+.tg-msg .b { font-family: "Archivo Black", sans-serif; }
+
+.tg-links {
+  border-left: 1px dashed var(--ink);
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.tg-links .label {
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  opacity: 0.7;
+}
+.tg-links a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 4px;
+  border-bottom: 2px solid var(--ink);
+  font-family: "Archivo Black", sans-serif;
+  font-size: 18px;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: padding 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.tg-links a:hover { padding-left: 12px; background: var(--punk); }
+.tg-links a .arr { font-family: "VT323", monospace; font-size: 22px; }
+
+.tg-foot {
+  margin-top: 18px;
+  border-top: 3px double var(--ink);
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Special Elite", "Courier Prime", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.tg-foot .stamp { font-size: 12px; padding: 3px 8px; }
+
+@media (max-width: 900px) {
+  .tg-body { grid-template-columns: 1fr; }
+  .tg-links { border-left: none; padding-left: 0; border-top: 1px dashed var(--ink); padding-top: 16px; }
+}

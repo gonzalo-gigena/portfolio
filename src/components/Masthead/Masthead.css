@@ -1,0 +1,83 @@
+.masthead {
+  position: relative;
+  z-index: 50;
+  background: var(--paper);
+  border-bottom: 3px double var(--ink);
+  padding: 14px 24px 8px;
+}
+.masthead-rule {
+  border-top: 1px solid var(--ink);
+  border-bottom: 4px solid var(--ink);
+  padding: 6px 0;
+  margin-bottom: 8px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.masthead-rule .center { font-family: "Instrument Serif", serif; font-style: italic; font-size: 14px; letter-spacing: 0.3em; }
+.masthead-rule .right { text-align: right; }
+.masthead-rule .blink { color: var(--brick); animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.masthead-title {
+  text-align: center;
+  font-family: "DM Serif Display", "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(56px, 9vw, 132px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.masthead-title .swap-1 { font-family: "Archivo Black", sans-serif; }
+.masthead-title .swap-2 { font-family: "VT323", monospace; color: var(--brick); }
+.masthead-title .swap-3 { font-family: "Instrument Serif", serif; font-style: italic; }
+.masthead-title .punk-bg {
+  background: var(--punk);
+  padding: 0 6px;
+  display: inline-block;
+  transform: rotate(-1.5deg);
+}
+
+.masthead-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  border-top: 4px double var(--ink);
+  border-bottom: 1px solid var(--ink);
+  margin-top: 6px;
+  padding: 8px 0;
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.masthead-meta .col { display: flex; flex-direction: column; gap: 2px; }
+.masthead-meta .col b { font-family: "VT323", monospace; font-size: 18px; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--brick); }
+.masthead-meta .col.center { text-align: center; }
+.masthead-meta .col.right { text-align: right; align-items: flex-end; }
+
+.mast-nav {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  padding: 6px 0 2px;
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.mast-nav a {
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.mast-nav a:hover { border-bottom-color: var(--brick); color: var(--brick); }
+
+@media (max-width: 900px) {
+  .masthead-meta { grid-template-columns: 1fr; }
+  .masthead-meta .col.center, .masthead-meta .col.right { text-align: left; align-items: flex-start; }
+}

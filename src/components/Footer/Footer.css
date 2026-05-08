@@ -1,0 +1,22 @@
+.colophon {
+  background: var(--ink);
+  color: var(--bone);
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.colophon .center { text-align: center; }
+.colophon .right { text-align: right; }
+.colophon .blink { color: var(--punk); animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.colophon b { font-family: "VT323", monospace; font-size: 16px; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--punk); }
+
+@media (max-width: 900px) {
+  .colophon { grid-template-columns: 1fr; text-align: center; }
+  .colophon .center, .colophon .right { text-align: center; }
+}

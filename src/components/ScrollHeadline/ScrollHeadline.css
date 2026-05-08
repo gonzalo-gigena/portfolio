@@ -1,0 +1,27 @@
+.scroll-headline {
+  position: relative;
+  background: var(--paper);
+  border-top: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+  padding: 18px 0;
+  overflow: hidden;
+  z-index: 3;
+}
+.scroll-headline-track {
+  display: flex;
+  white-space: nowrap;
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(48px, 8vw, 140px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  will-change: transform;
+}
+.scroll-headline-track span { padding: 0 32px; }
+.scroll-headline-track .alt { font-family: "Archivo Black", sans-serif; color: var(--brick); }
+.scroll-headline-track .alt2 { font-family: "VT323", monospace; color: var(--teal); font-size: 0.85em; }
+.scroll-headline-track .alt3 { font-family: "Instrument Serif", serif; font-style: italic; }
+.scroll-headline-track .alt4 { background: var(--punk); padding: 0 16px; }
+
+@media (max-width: 900px) {
+  .scroll-headline-track { font-size: 48px; }
+}

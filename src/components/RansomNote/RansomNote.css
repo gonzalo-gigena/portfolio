@@ -1,0 +1,30 @@
+.ransom { display: inline; }
+.ransom .r {
+  display: inline-block;
+  padding: 0 2px;
+  margin: 0 -1px;
+  line-height: 0.95;
+}
+.ransom .r.f1 { font-family: "Archivo Black", sans-serif; }
+.ransom .r.f2 { font-family: "Instrument Serif", serif; font-style: italic; }
+.ransom .r.f3 { font-family: "VT323", monospace; }
+.ransom .r.f4 { font-family: "DM Serif Display", serif; }
+.ransom .r.f5 { font-family: "Special Elite", "Courier Prime", monospace; }
+.ransom .r.b1 { background: var(--punk); }
+.ransom .r.b2 { background: var(--brick); color: var(--bone); }
+.ransom .r.b3 { background: var(--ink); color: var(--bone); }
+.ransom .r.b4 { background: var(--teal); color: var(--bone); }
+.ransom .r.b5 { background: var(--bone-2); }
+.ransom .r.b6 { background: transparent; }
+.ransom .r.u  { text-decoration: underline; text-decoration-thickness: 3px; }
+
+.ransom-anim .r {
+  display: inline-block;
+  opacity: 0;
+  transform: translate(var(--rx, 60px), var(--ry, -80px)) rotate(var(--rrot, 90deg)) scale(0.5) !important;
+  transition: opacity 0.35s, transform 0.65s cubic-bezier(.16,1.5,.3,1);
+}
+.ransom-anim.in .r {
+  opacity: 1;
+  transform: translate(0,0) rotate(var(--rot, 0deg)) scale(1) !important;
+}

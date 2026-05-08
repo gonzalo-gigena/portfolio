@@ -1,0 +1,64 @@
+.now {
+  background: var(--newsprint);
+  padding-top: 60px;
+}
+
+.bulletin-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.now-card {
+  position: relative;
+  border: 2px solid var(--ink);
+  background: var(--bone);
+  padding: 16px 16px 14px;
+  box-shadow: 5px 5px 0 var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 200px;
+}
+.now-card .tape { background: rgba(239,208,43,0.7); }
+.now-card .tag {
+  font-family: "Special Elite", "Courier Prime", monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brick);
+  border-bottom: 1px dashed var(--ink);
+  padding-bottom: 6px;
+}
+.now-card h4 {
+  margin: 0;
+  font-family: "DM Serif Display", serif;
+  font-size: 22px;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.now-card h4 .alt { font-family: "VT323", monospace; color: var(--brick); }
+.now-card p {
+  margin: 0;
+  font-family: "Special Elite", "Courier Prime", monospace;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.now-card .pixel-icon { align-self: flex-end; margin-top: auto; }
+
+.bulletin-grid.in .now-card { animation: cardCrash 0.7s cubic-bezier(.16,1.4,.3,1) both; }
+.bulletin-grid.in .now-card:nth-child(1) { animation-delay: 0.05s; transform-origin: top left; }
+.bulletin-grid.in .now-card:nth-child(2) { animation-delay: 0.18s; transform-origin: top center; }
+.bulletin-grid.in .now-card:nth-child(3) { animation-delay: 0.31s; transform-origin: top right; }
+.bulletin-grid.in .now-card:nth-child(4) { animation-delay: 0.44s; transform-origin: bottom left; }
+.bulletin-grid.in .now-card:nth-child(5) { animation-delay: 0.57s; transform-origin: bottom center; }
+.bulletin-grid.in .now-card:nth-child(6) { animation-delay: 0.70s; transform-origin: bottom right; }
+@keyframes cardCrash {
+  0%   { transform: translateY(-300px) rotate(45deg) scale(0.4); opacity: 0; filter: blur(6px); }
+  60%  { transform: translateY(15px) rotate(-6deg) scale(1.05); opacity: 1; filter: none; }
+  85%  { transform: translateY(-3px) rotate(2deg) scale(0.98); }
+  100% { transform: translateY(0) rotate(0) scale(1); opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .bulletin-grid { grid-template-columns: 1fr 1fr; }
+}

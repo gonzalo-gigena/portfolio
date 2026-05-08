@@ -1,0 +1,8 @@
+export const PRESS_CLIPS = [
+  { img: "a", title_a: "satellite", title_s: " stares ", title_p: "back", cap: "synthetic dataset, generated in unity for the thesis. lighting is hard.", src: "thesis · 2024" },
+  { img: "b", title_a: "icpc", title_s: " regional ", title_p: "2020", cap: "team photo, mid-debug. one sandwich, three problems unsolved.", src: "south america · 2020" },
+  { img: "c", title_a: "blockchain ", title_s: "is ", title_p: "weird", cap: "experimenting with EVM bindings on a long weekend.", src: "nexus · 2026" },
+  { img: "d", title_a: "epps ", title_s: "circa ", title_p: "2022", cap: "one of about forty material ui dashboards. sorry, design system.", src: "leniolabs · 2022" },
+  { img: "e", title_a: "the ", title_s: "great ", title_p: "yaml", cap: "every modern engineer eventually meets their personal yaml. mine has 412 lines.", src: "ongoing · forever" },
+  { img: "a", title_a: "compile ", title_s: "or ", title_p: "die", cap: "a self-portrait, in the style of a borrow checker.", src: "rust · q4 2025" },
+]

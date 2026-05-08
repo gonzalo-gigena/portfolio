@@ -1,0 +1,25 @@
+.marquee {
+  background: var(--ink);
+  color: var(--bone);
+  padding: 14px 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: "VT323", monospace;
+  font-size: 28px;
+  position: relative;
+  z-index: 3;
+}
+.marquee-track {
+  display: inline-flex;
+  gap: 40px;
+  animation: marquee 30s linear infinite;
+}
+.marquee span { display: inline-flex; align-items: center; gap: 20px; }
+.marquee em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--punk); }
+.marquee b { font-family: "Archivo Black", sans-serif; color: var(--brick); font-weight: normal; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}

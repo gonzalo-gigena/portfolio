@@ -1,0 +1,137 @@
+.press {
+  background: var(--ink);
+  color: var(--bone);
+  padding: 70px 24px 50px;
+  border-bottom: 3px solid var(--ink);
+}
+.press .section-head { border-color: var(--bone); }
+.press .section-head .lbl { background: var(--punk); color: var(--ink); }
+.press .section-head h2 { color: var(--bone); }
+.press .section-head .right { color: var(--bone); opacity: 0.7; }
+
+.press-strip {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 12px 4px 24px;
+  scrollbar-width: thin;
+}
+.press-strip::-webkit-scrollbar { height: 8px; }
+.press-strip::-webkit-scrollbar-track { background: var(--ink-2); }
+.press-strip::-webkit-scrollbar-thumb { background: var(--punk); border: 2px solid var(--ink); }
+
+.clip {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--bone);
+  box-shadow: 8px 8px 0 var(--brick);
+  padding: 14px 14px 16px;
+  position: relative;
+  transform: rotate(var(--r, -1deg));
+  transition: transform 0.2s ease;
+}
+.clip:hover { transform: rotate(0) translateY(-4px); }
+.clip:nth-child(2n) { --r: 1.5deg; box-shadow: 8px 8px 0 var(--punk); }
+.clip:nth-child(3n) { --r: -2deg; box-shadow: 8px 8px 0 var(--teal); }
+
+.clip-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border: 2px solid var(--ink);
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+  filter: contrast(1.15);
+}
+.clip-img.a { background:
+  radial-gradient(circle at 30% 40%, var(--brick) 0 28%, transparent 28%),
+  radial-gradient(circle at 70% 60%, var(--teal) 0 22%, transparent 22%),
+  repeating-linear-gradient(45deg, var(--bone-2) 0 4px, var(--bone) 4px 8px);
+}
+.clip-img.b { background:
+  linear-gradient(180deg, var(--teal) 0 60%, var(--bone-2) 60% 100%),
+  repeating-linear-gradient(0deg, transparent 0 6px, rgba(0,0,0,0.1) 6px 7px);
+}
+.clip-img.c { background:
+  conic-gradient(from 45deg at 50% 50%, var(--brick), var(--punk), var(--teal), var(--ink), var(--brick)),
+  repeating-radial-gradient(circle at center, transparent 0 4px, rgba(26,24,21,0.08) 4px 5px);
+  filter: contrast(1.4) saturate(0.5);
+}
+.clip-img.d { background:
+  repeating-linear-gradient(135deg, var(--ink) 0 2px, transparent 2px 8px),
+  linear-gradient(45deg, var(--punk), var(--brick));
+}
+.clip-img.e { background:
+  radial-gradient(circle at 50% 50%, var(--bone) 0 18%, transparent 18%),
+  repeating-linear-gradient(90deg, var(--teal) 0 12px, var(--teal-dim) 12px 24px);
+}
+.clip-img::after {
+  content: "[FILE PHOTO]";
+  position: absolute;
+  bottom: 6px; left: 6px;
+  font-family: "Special Elite", "Courier Prime", monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  background: rgba(26,24,21,0.85);
+  color: var(--bone);
+  padding: 2px 5px;
+}
+.clip h4 {
+  margin: 0 0 6px;
+  font-family: "DM Serif Display", serif;
+  font-size: 22px;
+  line-height: 1;
+}
+.clip h4 .a { font-family: "Archivo Black", sans-serif; }
+.clip h4 .s { font-family: "Instrument Serif", serif; font-style: italic; color: var(--brick); }
+.clip h4 .p { font-family: "VT323", monospace; color: var(--teal); }
+.clip .cap {
+  font-family: "Special Elite", "Courier Prime", monospace;
+  font-size: 11px;
+  line-height: 1.45;
+  margin: 0;
+}
+.clip .src {
+  display: block;
+  margin-top: 8px;
+  font-family: "Space Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+.press-foot {
+  margin-top: 4px;
+  font-family: "Special Elite", "Courier Prime", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  text-align: right;
+}
+
+.press-strip .clip {
+  opacity: 0;
+  transform: translateY(60px) rotate(var(--r, -1deg));
+}
+.press-strip.in .clip {
+  animation: clipIn 0.8s cubic-bezier(.16,1.4,.3,1) both;
+}
+.press-strip.in .clip:nth-child(1) { animation-delay: 0.05s; }
+.press-strip.in .clip:nth-child(2) { animation-delay: 0.18s; }
+.press-strip.in .clip:nth-child(3) { animation-delay: 0.31s; }
+.press-strip.in .clip:nth-child(4) { animation-delay: 0.44s; }
+.press-strip.in .clip:nth-child(5) { animation-delay: 0.57s; }
+.press-strip.in .clip:nth-child(6) { animation-delay: 0.70s; }
+@keyframes clipIn {
+  0%   { transform: translate(-30vw, -100px) rotate(-30deg) scale(0.7); opacity: 0; }
+  70%  { transform: translateY(-8px) rotate(calc(var(--r, -1deg) + 4deg)) scale(1.05); opacity: 1; }
+  100% { transform: translate(0,0) rotate(var(--r, -1deg)) scale(1); opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .clip { flex-basis: 260px; }
+}
