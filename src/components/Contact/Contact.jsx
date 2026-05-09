@@ -38,7 +38,7 @@ export function Contact() {
             <div className="label">→ direct lines</div>
             <a href="mailto:gonzalo.gigena.alvarez@gmail.com">email<span className="arr">↗</span></a>
             <a href="https://github.com/gonzalo-gigena">github<span className="arr">↗</span></a>
-            <a href="www.linkedin.com/in/gonzalo-gigena">linkedin<span className="arr">↗</span></a>
+            <a href="https://linkedin.com/in/gonzalo-gigena">linkedin<span className="arr">↗</span></a>
             <div style={{ marginTop: 16, fontFamily: "Special Elite, monospace", fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", opacity: 0.7 }}>
               psst — try ↑ ↑ ↓ ↓ ← → ← → b a
             </div>
