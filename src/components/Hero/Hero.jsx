@@ -20,9 +20,8 @@ export function Hero() {
           </h1>
           <Reveal as="p" className="deck">
             <span className="a">Gonzalo Gigena Alvarez</span>, 27, of Córdoba —
-            backend engineer, <em>recovering</em> competitive programmer, and self-described{" "}
-            <span className="p">satellite-photo-faker</span> — has reportedly continued writing software
-            despite all available evidence that he should rest.
+            backend engineer, former competitive programmer, M.Sc. in Computer Science —
+            currently shipping backend services for <span className="p">nexus</span>, an EVM blockchain headquartered in San Francisco.
           </Reveal>
           <Reveal className="byline">
             <span>by the editor</span>
@@ -32,22 +31,20 @@ export function Hero() {
           </Reveal>
           <Reveal className="lede">
             <p>
-              CÓRDOBA — In a development surprising no one, local engineer{" "}
-              <span className="a">G. Gigena</span> was again seen{" "}
-              <span className="hl">writing rust</span> in public this week, muttering about
-              &ldquo;lifetimes&rdquo; to anyone willing to listen.
+              CÓRDOBA — <span className="a">G. Gigena</span> is a backend engineer
+              focused on <span className="hl">distributed systems</span>, API design,
+              and blockchain integrations, based in Argentina and working remotely.
             </p>
             <p>
-              Sources confirm he is presently shipping backend services for{" "}
+              He is currently shipping backend services for{" "}
               <span className="p">nexus</span>, an EVM blockchain headquartered in San
-              Francisco, while remaining stubbornly based in Argentina —{" "}
+              Francisco —{" "}
               <span className="s">&ldquo;the timezone is fine,&rdquo;</span> he said.
             </p>
             <p>
-              The full story, including unverified claims about a thesis on satellite
-              pose estimation and at least three years of competitive programming, is
-              continued on page <span className="hl">B-7</span>, also known as: scroll
-              down.
+              Background includes a thesis on satellite pose estimation, three years of
+              competitive programming, and full-stack work across multiple industries.
+              Full details on page <span className="hl">B-7</span>: scroll down.
             </p>
           </Reveal>
           <Reveal className="statbar stagger">
@@ -83,8 +80,8 @@ export function Hero() {
             </Sticker>
             <Sticker initial={{ x: 220, y: 320 }} rotate={-6} zIndex={6} tape="top">
               <div className="sticker-quote">
-                <q>i am <em>the</em> cv</q>
-                <span className="by">— probably said in 1987</span>
+                <q>build things <em>that</em> last</q>
+                <span className="by">— g.g · 2026</span>
               </div>
             </Sticker>
             <Sticker initial={{ x: 380, y: 460 }} rotate={8} zIndex={3} tape="tr">

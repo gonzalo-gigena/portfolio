@@ -3,7 +3,7 @@ export const STACK_ITEMS = [
     num: "// 001",
     title_a: "Rust",
     title_b: "",
-    desc: "for systems that should not crash. usually doesn't.",
+    desc: "for systems where correctness and performance are non-negotiable.",
     price: "$$$",
   },
   {
@@ -17,14 +17,14 @@ export const STACK_ITEMS = [
     num: "// 003",
     title_a: "Type",
     title_b: "Script",
-    desc: "a love letter to the compiler.",
+    desc: "typed javascript. better contracts, fewer surprises.",
     price: "$$",
   },
   {
     num: "// 004",
     title_a: "Python",
     title_b: "",
-    desc: "two years of pandas. it shows.",
+    desc: "data pipelines, ml training, two years in pandas and scipy.",
     price: "$$",
   },
   {
@@ -38,7 +38,7 @@ export const STACK_ITEMS = [
     num: "// 006",
     title_a: "Java",
     title_b: " / Spring",
-    desc: "boot beans. enterprise. you know.",
+    desc: "backend services and rest apis for enterprise systems.",
     price: "$",
   },
   {
@@ -59,7 +59,7 @@ export const STACK_ITEMS = [
     num: "// 009",
     title_a: "Fire",
     title_b: "store",
-    desc: "documents pretending to be tables.",
+    desc: "document database. used for flexible, real-time data models.",
     price: "$$",
   },
   {
@@ -94,21 +94,21 @@ export const STACK_ITEMS = [
     num: "// 014",
     title_a: "Unity",
     title_b: " / C#",
-    desc: "rendered fake space photos. shadows lie.",
+    desc: "generated synthetic satellite datasets for thesis research.",
     price: "$",
   },
   {
     num: "// 015",
     title_a: "GH",
     title_b: " Actions",
-    desc: "the only ci/cd that didn't make me cry.",
+    desc: "ci/cd automation for builds, tests, and deploys.",
     price: "$$",
   },
   {
     num: "// 016",
     title_a: "vim",
     title_b: "",
-    desc: "i can't quit. literally.",
+    desc: "primary editor. modal editing, fast navigation.",
     price: "free",
   },
 ]

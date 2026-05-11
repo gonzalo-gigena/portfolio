@@ -12,7 +12,7 @@ export const PRESS_CLIPS = [
     title_a: "icpc",
     title_s: " regional ",
     title_p: "2020",
-    cap: "team photo, mid-debug. one sandwich, three problems unsolved.",
+    cap: "team photo at icpc south america regional, 2020.",
     src: "south america · 2020",
   },
   {
@@ -28,7 +28,7 @@ export const PRESS_CLIPS = [
     title_a: "epps ",
     title_s: "circa ",
     title_p: "2022",
-    cap: "one of about forty material ui dashboards. sorry, design system.",
+    cap: "material ui dashboard for the encompass product and pricing service.",
     src: "leniolabs · 2022",
   },
   {
@@ -44,7 +44,7 @@ export const PRESS_CLIPS = [
     title_a: "compile ",
     title_s: "or ",
     title_p: "die",
-    cap: "a self-portrait, in the style of a borrow checker.",
+    cap: "working through rust — systems programming, ownership, and concurrency.",
     src: "rust · q4 2025",
   },
 ]

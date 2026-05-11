@@ -8,9 +8,9 @@ export const FIELD_NOTES = [
   },
   {
     when: "tuesday · 14:11",
-    q_text: "the rust compiler is the only friend i have who tells me the truth and means it.",
+    q_text: "the rust compiler is the most honest feedback loop i have ever worked with.",
     q_em: "rust compiler",
-    by: "g.g · self-roast",
+    by: "g.g · field notebook",
   },
   {
     when: "wednesday · 23:58",

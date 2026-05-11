@@ -17,8 +17,6 @@ export function Contact() {
             <span className="b">from:</span> g. gigena, córdoba{" "}
             <span className="stop">stop</span><br />
             <span className="hl">say hi</span>{" "}
-            <span className="stop">stop</span>{" "}
-            don&apos;t be weird{" "}
             <span className="stop">stop</span><br />
             mornings for code{" "}
             <span className="stop">stop</span>{" "}
@@ -29,7 +27,7 @@ export function Contact() {
             <span className="stop">stop</span>{" "}
             two coffees a day{" "}
             <span className="stop">stop</span>{" "}
-            one cat (allegedly){" "}
+            one cat{" "}
             <span className="stop">stop</span><br />
             <span className="b">end of message</span>{" "}
             <span className="stop">stop</span>

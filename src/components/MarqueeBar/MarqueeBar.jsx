@@ -8,8 +8,8 @@ export function MarqueeBar() {
       <b>★</b><em> rust + nodejs + firestore </em>
       <b>★</b><em> evm bindings </em>
       <b>★</b><em> distributed systems </em>
-      <b>★</b><em> still bad at css </em>
-      <b>★</b><em> still good at sql </em>
+      <b>★</b><em> api design </em>
+      <b>★</b><em> sql + nosql </em>
       <b>★ </b>
     </span>
   )

@@ -28,7 +28,7 @@ export function Masthead() {
         </div>
         <div className="col center">
           <span>weather, córdoba</span>
-          <b>24°c · partly debugged</b>
+          <b>24°c · partly cloudy</b>
         </div>
         <div className="col right">
           <span>local time</span>
