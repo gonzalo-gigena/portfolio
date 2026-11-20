@@ -3,8 +3,8 @@ import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import { reducedMotion } from './useInView.js'
 
-// Weighted smooth scroll; native scroll under reduced motion.
-export const lenis = reducedMotion() ? null : new Lenis({ lerp: 0.1 })
+// Weighted smooth scroll; native scroll under reduced motion and on touch screens (Lenis doesn't smooth touch anyway).
+export const lenis = reducedMotion() || matchMedia('(pointer: coarse)').matches ? null : new Lenis({ lerp: 0.1 })
 if (import.meta.env.DEV) {
   // dev-only: scripted scroll checks (?y=1234 jumps there after load)
   window.__lenis = lenis

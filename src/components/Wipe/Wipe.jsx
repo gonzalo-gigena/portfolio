@@ -31,12 +31,13 @@ export default function Wipe({ shape, from, to, onProgress, children, className 
       last = -1
     }
     size()
-    addEventListener('resize', size)
+    const ro = new ResizeObserver(size)
+    ro.observe(cv)
 
     const off = onFrame((y) => {
       const { top, height } = m.current
-      if (y + innerHeight < top || y > top + height) return
-      const p = clamp((y - top) / (height - innerHeight))
+      if (y + H < top || y > top + height) return
+      const p = clamp((y - top) / (height - H)) // H, not innerHeight: stable while the mobile address bar moves
       if (p === last) return
       last = p
       onProgress?.(p)
@@ -56,7 +57,7 @@ export default function Wipe({ shape, from, to, onProgress, children, className 
       ctx.fillStyle = fg
       ctx.fill()
     })
-    return () => { off(); removeEventListener('resize', size) }
+    return () => { off(); ro.disconnect() }
   }, [])
 
   if (still) return children ? <div className={`wipe-still ${className}`}>{children}</div> : null

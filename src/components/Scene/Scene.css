@@ -1,6 +1,6 @@
 .scene { position: relative; height: var(--len); background: var(--black); color: var(--white); }
 .scene:focus { outline: none; }
-.scene-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.scene-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
 .scene-layer {
   position: absolute;
   inset: 0;
@@ -29,7 +29,6 @@
 .scene--stacked .scene-note { bottom: 72px; left: var(--margin); right: var(--margin); text-align: left; }
 
 @media (max-width: 760px) {
-  .scene-stage { height: 100svh; }
   .scene-layer { padding: 128px var(--margin) calc(var(--hud) + 108px); }
   .scene-note { left: var(--margin); text-align: left; bottom: calc(var(--hud) + 40px); }
   .scene-meta { top: 60px; }

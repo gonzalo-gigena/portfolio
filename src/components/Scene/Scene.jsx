@@ -39,7 +39,9 @@ export default function Scene({ id, meta, layers, bounds, onProgress, length = 4
   const [stacked, setStacked] = useState(reducedMotion)
   const [current, setCurrent] = useState(0)
   const last = useRef(-1)
+  const vh = useRef(1)
   const refit = () => {
+    vh.current = stage.current.offsetHeight
     if (reducedMotion()) return
     origins.current = layerEls.current.map((el) => (el ? fit(el, stage.current) : '50% 50%'))
     last.current = -1
@@ -86,8 +88,10 @@ export default function Scene({ id, meta, layers, bounds, onProgress, length = 4
     last.current = -1
     return onFrame((y) => {
       const { top, height } = m.current
-      if (y + innerHeight < top - 200 || y > top + height + 200) return
-      const p = clamp((y - top) / (height - innerHeight))
+      // the pinned stage's own height, not innerHeight: on phones innerHeight changes every frame
+      // while the address bar collapses, which made the progress (and the zoom) shake
+      if (y + vh.current < top - 200 || y > top + height + 200) return
+      const p = clamp((y - top) / (height - vh.current))
       if (p === last.current) return
       last.current = p
       apply(p)
