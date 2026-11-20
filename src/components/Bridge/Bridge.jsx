@@ -4,9 +4,9 @@ import Scene, { SceneTitle } from '../Scene/Scene.jsx'
 import useInView from '../../useInView.js'
 import { bridge as p, validators, boxes, states } from './bridge.data.js'
 import { clamp } from '../../pixel.js'
+import { reducedMotion } from '../../useInView.js'
 
 const BOUNDS = [0, 0.2, 1]
-const TAPS = [0.08, 0.36, 0.64, 0.92]
 const ORDER = ['healthy', 'degraded', 'recovered']
 
 function Topology({ state, vertical }) {
@@ -29,7 +29,7 @@ function Topology({ state, vertical }) {
       {/* packets drawn before the boxes: the opaque boxes hide them, so they only show on the wires */}
       {[0, 1, 2].map((i) => (
         <rect key={i} x="-4" y="-4" width="8" height="8" className="topo-pkt">
-          <animateMotion dur="3s" begin={`${i}s`} repeatCount="indefinite" path={lane} />
+          <animateMotion dur="3s" begin={`${-i}s`} repeatCount="indefinite" path={lane} />
         </rect>
       ))}
       {boxes.map((b) => {
@@ -85,6 +85,12 @@ export default function Bridge() {
     mq.addEventListener('change', f)
     return () => mq.removeEventListener('change', f)
   }, [])
+  // reduced motion: no scroll scrub, so the health states cycle on a timer instead
+  useEffect(() => {
+    if (!reducedMotion()) return
+    const t = setInterval(() => setState((s) => ORDER[(ORDER.indexOf(s) + 1) % ORDER.length]), 2600)
+    return () => clearInterval(t)
+  }, [])
   const onProgress = (pr) => {
     const local = clamp((pr - BOUNDS[1]) / (1 - BOUNDS[1]))
     setState(local < 0.4 ? 'healthy' : local < 0.7 ? 'degraded' : 'recovered')
@@ -113,5 +119,5 @@ export default function Bridge() {
     },
   ]
 
-  return <Scene id={p.id} meta={p.meta} note={p.note} layers={layers} bounds={BOUNDS} taps={TAPS} onProgress={onProgress} length={380} />
+  return <Scene id={p.id} meta={p.meta} note={p.note} layers={layers} bounds={BOUNDS} onProgress={onProgress} length={380} />
 }

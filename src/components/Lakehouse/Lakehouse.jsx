@@ -7,7 +7,6 @@ import { lakehouse as p } from './lakehouse.data.js'
 import { clamp } from '../../pixel.js'
 
 const BOUNDS = [0, 0.2, 0.68, 1]
-const TAPS = [0.08, 0.56, 0.9]
 
 // Project 01: title → pipeline (stages light up as you scroll) → push through the dashboard node.
 export default function Lakehouse() {
@@ -29,5 +28,5 @@ export default function Lakehouse() {
     { name: 'Dashboard', node: <Dashboard /> },
   ]
 
-  return <Scene id={p.id} meta={p.meta} note={p.note} layers={layers} bounds={BOUNDS} taps={TAPS} onProgress={onProgress} length={460} />
+  return <Scene id={p.id} meta={p.meta} note={p.note} layers={layers} bounds={BOUNDS} onProgress={onProgress} length={460} />
 }

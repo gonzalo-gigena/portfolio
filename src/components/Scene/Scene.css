@@ -5,6 +5,7 @@
   position: absolute;
   inset: 0;
   display: grid;
+  grid-template-rows: minmax(0, 1fr); /* fixed track: oversized content overflows evenly, then fit() shrinks it about its centre */
   place-items: center;
   padding: 92px var(--margin) 104px;
   will-change: transform, opacity;
@@ -19,33 +20,19 @@
 .scene-h { display: grid; font-size: clamp(64px, 14.5vw, 260px); }
 .scene-line { justify-self: end; max-width: 36ch; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.38; letter-spacing: -0.012em; color: rgba(255, 255, 255, 0.78); margin-right: 6vw; }
 
-/* stacked: phones and reduced motion. No pinning; layers swap in place. */
+/* stacked: phones and reduced motion. No pinning; layers follow each other in normal flow. */
 .scene--stacked { height: auto; }
-.scene--stacked .scene-stage { position: relative; height: auto; min-height: 100svh; display: grid; }
-.scene--stacked .scene-layer { position: relative; inset: auto; grid-area: 1 / 1; padding: 96px var(--margin) 150px; animation: layer-in 0.7s var(--ease-out); }
-.scene--stacked .scene-layer[aria-hidden='true'] { display: none; }
-@keyframes layer-in { from { opacity: 0; transform: scale(0.92); } }
-.scene--stacked .scene-readout { bottom: 96px; }
+.scene--stacked .scene-stage { position: relative; height: auto; }
+.scene--stacked .scene-layer { position: relative; inset: auto; grid-template-rows: auto; padding: 48px var(--margin); }
+.scene--stacked .scene-layer:first-child { min-height: 100svh; padding-top: 96px; }
+.scene--stacked .scene-layer:last-of-type { padding-bottom: 150px; }
 .scene--stacked .scene-note { bottom: 72px; left: var(--margin); right: var(--margin); text-align: left; }
-.scene-next {
-  position: absolute;
-  z-index: 3;
-  right: var(--margin);
-  bottom: 88px;
-  min-height: 44px;
-  padding: 0 16px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-.scene-next:hover { background: rgba(255, 255, 255, 0.2); }
 
 @media (max-width: 760px) {
+  .scene-stage { height: 100svh; }
+  .scene-layer { padding: 128px var(--margin) calc(var(--hud) + 108px); }
+  .scene-note { left: var(--margin); text-align: left; bottom: calc(var(--hud) + 40px); }
   .scene-meta { top: 60px; }
   .scene-line { justify-self: start; margin-right: 0; }
-  .scene--stacked .scene-readout { bottom: 128px; }
-  .scene--stacked .scene-note { bottom: 150px; }
-  .scene--stacked .scene-layer { padding: 124px var(--margin) 190px; }
+  .scene--stacked .scene-layer:first-child { padding-top: 124px; }
 }

@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import './Scene.css'
-import Arrow from '../Arrow/Arrow.jsx'
 import { onFrame, useMeasure } from '../../scroll.js'
 import { reducedMotion } from '../../useInView.js'
 import { clamp, easeOut } from '../../pixel.js'
@@ -11,32 +10,52 @@ const W = 0.07 // half-width of a layer handover, in scene progress
 function centreIn(el, root) {
   let x = el.offsetWidth / 2, y = el.offsetHeight / 2
   while (el && el !== root) { x += el.offsetLeft; y += el.offsetTop; el = el.offsetParent }
-  return `${x}px ${y}px`
+  return [x, y]
+}
+
+// shrink a layer's content to fit the viewport (phones: the diagrams are taller than the screen).
+// Returns the zoom origin for the next layer, corrected for that shrink.
+function fit(el, stage) {
+  const c = el.firstElementChild
+  c.style.transform = ''
+  const cs = getComputedStyle(el)
+  const h = el.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom)
+  const f = Math.min(1, h / c.offsetHeight)
+  if (f < 1) c.style.transform = `scale(${f.toFixed(4)})`
+  const z = el.querySelector('[data-zoom]')
+  if (!z) return '50% 50%'
+  const [zx, zy] = centreIn(z, stage), [cx, cy] = centreIn(c, stage)
+  return `${cx + (zx - cx) * f}px ${cy + (zy - cy) * f}px`
 }
 
 // A full-screen project scene. On desktop it pins and scroll scrubs a camera push through its layers:
-// each layer grows out of a node of the one before it. On phones and under reduced motion the layers
-// become a stacked scene you tap through. `bounds` splits progress between layers.
-export default function Scene({ id, meta, layers, bounds, taps, onProgress, length = 400, note }) {
+// each layer grows out of a node of the one before it. Under reduced motion the layers
+// stack in normal flow, all visible. `bounds` splits progress between layers.
+export default function Scene({ id, meta, layers, bounds, onProgress, length = 400, note }) {
   const root = useRef(null)
   const stage = useRef(null)
   const layerEls = useRef([])
   const origins = useRef([])
-  const [stacked, setStacked] = useState(false)
-  const [tap, setTap] = useState(0)
+  const [stacked, setStacked] = useState(reducedMotion)
   const [current, setCurrent] = useState(0)
   const last = useRef(-1)
-  const m = useMeasure(root, () => {
-    origins.current = layerEls.current.map((el) => {
-      const z = el?.querySelector('[data-zoom]')
-      return z ? centreIn(z, stage.current) : '50% 50%'
-    })
+  const refit = () => {
+    if (reducedMotion()) return
+    origins.current = layerEls.current.map((el) => (el ? fit(el, stage.current) : '50% 50%'))
     last.current = -1
-  })
+  }
+  const m = useMeasure(root, refit)
+
+  // layer content can change size after mount (fonts, the bridge going vertical); refit when it does
+  useEffect(() => {
+    const ro = new ResizeObserver(refit)
+    layerEls.current.forEach((el) => el && ro.observe(el.firstElementChild))
+    return () => ro.disconnect()
+  }, [])
 
   useEffect(() => {
-    const mq = matchMedia('(max-width: 760px)')
-    const f = () => setStacked(mq.matches || reducedMotion())
+    const mq = matchMedia('(prefers-reduced-motion: reduce)')
+    const f = () => setStacked(mq.matches)
     f()
     mq.addEventListener('change', f)
     return () => mq.removeEventListener('change', f)
@@ -75,8 +94,12 @@ export default function Scene({ id, meta, layers, bounds, taps, onProgress, leng
     })
   }, [stacked])
 
-  // stacked: taps drive progress
-  useEffect(() => { if (stacked) apply(taps[tap]) }, [stacked, tap])
+  // stacked: every layer shown as-is, scene treated as fully played
+  useEffect(() => {
+    if (!stacked) return
+    layerEls.current.forEach((el) => { if (el) el.style.cssText = el.firstElementChild.style.transform = '' })
+    onProgress?.(1)
+  }, [stacked])
 
   const n = layers.length
   return (
@@ -90,21 +113,18 @@ export default function Scene({ id, meta, layers, bounds, taps, onProgress, leng
     >
       <div className="scene-stage" ref={stage}>
         {layers.map((l, i) => (
-          <div key={l.name} ref={(el) => (layerEls.current[i] = el)} className="scene-layer" aria-hidden={stacked ? current !== i : undefined}>
+          <div key={l.name} ref={(el) => (layerEls.current[i] = el)} className="scene-layer">
             {l.node}
           </div>
         ))}
 
         <p className="scene-meta mono">{meta}</p>
-        <p className="scene-readout mono" aria-live="polite">
-          Layer {current + 1} / {n} · {layers[current].name}
-        </p>
-        {note && <p className="scene-note mono">{note}</p>}
-        {stacked && (
-          <button type="button" className="scene-next mono" onClick={() => setTap((t) => (t + 1) % taps.length)}>
-            {tap === taps.length - 1 ? 'Start over' : 'Next layer'}<Arrow dir="e" />
-          </button>
+        {!stacked && (
+          <p className="scene-readout mono" aria-live="polite">
+            Layer {current + 1} / {n} · {layers[current].name}
+          </p>
         )}
+        {note && <p className="scene-note mono">{note}</p>}
       </div>
     </article>
   )
