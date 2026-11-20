@@ -1,0 +1,6 @@
+.about { padding-block: clamp(160px, 22vw, 340px); }
+.about-text { grid-column: 6 / span 5; font-size: clamp(20px, 1.9vw, 28px); line-height: 1.32; letter-spacing: -0.022em; max-width: 38ch; }
+.about-aside { grid-column: 6 / span 5; margin-top: 40px; }
+@media (max-width: 760px) {
+  .about-text, .about-aside { grid-column: 1 / -1; }
+}

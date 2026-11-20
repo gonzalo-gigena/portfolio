@@ -1,0 +1,5 @@
+.wipe { position: relative; height: 230vh; }
+.wipe-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.wipe-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.wipe-over { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 22px; padding-inline: var(--margin); text-align: center; color: var(--white); }
+.wipe-still { display: grid; place-items: center; align-content: center; gap: 22px; min-height: 70vh; padding: var(--section) var(--margin); text-align: center; background: var(--black); color: var(--white); }

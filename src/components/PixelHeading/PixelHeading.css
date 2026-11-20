@@ -1,0 +1,4 @@
+.pixel-heading { position: relative; }
+.pixel-heading-text { display: inline-block; white-space: nowrap; }
+.js .pixel-heading-text { opacity: 0; }
+.pixel-heading-canvas { position: absolute; pointer-events: none; }

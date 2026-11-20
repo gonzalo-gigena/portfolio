@@ -1,0 +1,37 @@
+.intro { padding-bottom: clamp(80px, 10vw, 160px); }
+.intro-statement {
+  font-size: clamp(32px, 4.6vw, 76px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  text-wrap: pretty;
+}
+.js .intro-word { opacity: 0.15; }
+.intro-paras {
+  grid-column: 6 / span 6;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+  margin-top: clamp(64px, 8vw, 120px);
+}
+.intro-paras p { max-width: 38ch; font-size: 15px; line-height: 1.5; }
+.intro-paras p + p { color: var(--ink-2); }
+
+.marquee { margin-top: clamp(96px, 12vw, 180px); overflow: hidden; white-space: nowrap; border-block: 1px solid var(--line); }
+.marquee-run { display: inline-flex; animation: marquee 60s linear infinite; padding-block: 0.06em 0.1em; }
+.marquee-run span {
+  font-size: clamp(64px, 11vw, 190px);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  padding-right: 0.35em;
+}
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+@media (max-width: 760px) {
+  .intro-paras { grid-column: 1 / -1; grid-template-columns: 1fr; gap: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .intro-word { opacity: 1; }
+  .marquee-run { animation: none; }
+}

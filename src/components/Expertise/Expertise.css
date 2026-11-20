@@ -1,0 +1,51 @@
+.section-title { grid-column: 1 / -1; font-size: clamp(60px, 12vw, 216px); margin-bottom: clamp(56px, 7vw, 112px); }
+.xp-block {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  padding: 28px 0 44px;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.xp-block + .xp-block { margin-top: 8px; }
+.xp-key {
+  position: absolute;
+  top: 18px;
+  right: 0;
+  font-size: clamp(48px, 6vw, 96px);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.13);
+}
+.xp-line { max-width: 22ch; font-size: clamp(28px, 3.3vw, 52px); font-weight: 600; letter-spacing: -0.04em; line-height: 1.02; text-wrap: balance; }
+.xp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.xp-tag { position: relative; }
+.xp-tag .pill { transition: background 0.25s, color 0.25s; }
+.xp-tag .pill:hover, .xp-tag .pill.is-on { background: var(--ink); color: var(--paper); }
+.xp-tip {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 10px);
+  z-index: 5;
+  width: max-content;
+  max-width: 300px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 10px;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.3s var(--ease-out);
+}
+.xp-tip.is-on { opacity: 1; transform: none; }
+
+@media (max-width: 760px) {
+  /* anchor tips to the tag row so they never run past the screen edge */
+  .xp-tags { position: relative; }
+  .xp-tag { position: static; }
+  .xp-tip { max-width: 100%; }
+}

@@ -1,0 +1,5 @@
+.work { background: var(--black); color: var(--white); overflow-x: clip; }
+.work-title { font-size: clamp(56px, 11vw, 200px); }
+.js .work-sub { opacity: 0; }
+.wipe-still .work-sub { opacity: 1; }
+.wipe--out { height: 200vh; }

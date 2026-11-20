@@ -1,0 +1,51 @@
+.scene { position: relative; height: var(--len); background: var(--black); color: var(--white); }
+.scene:focus { outline: none; }
+.scene-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.scene-layer {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 92px var(--margin) 104px;
+  will-change: transform, opacity;
+}
+
+.scene-meta, .scene-readout, .scene-note { position: absolute; z-index: 2; color: rgba(255, 255, 255, 0.62); }
+.scene-meta { top: 48px; left: var(--margin); right: var(--margin); color: var(--white); }
+.scene-readout { bottom: calc(var(--hud) + 16px); left: var(--margin); }
+.scene-note { bottom: calc(var(--hud) + 16px); right: var(--margin); text-align: right; max-width: 46ch; }
+
+.scene-title { display: grid; gap: clamp(28px, 4vw, 56px); width: 100%; }
+.scene-h { display: grid; font-size: clamp(64px, 14.5vw, 260px); }
+.scene-line { justify-self: end; max-width: 36ch; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.38; letter-spacing: -0.012em; color: rgba(255, 255, 255, 0.78); margin-right: 6vw; }
+
+/* stacked: phones and reduced motion. No pinning; layers swap in place. */
+.scene--stacked { height: auto; }
+.scene--stacked .scene-stage { position: relative; height: auto; min-height: 100svh; display: grid; }
+.scene--stacked .scene-layer { position: relative; inset: auto; grid-area: 1 / 1; padding: 96px var(--margin) 150px; animation: layer-in 0.7s var(--ease-out); }
+.scene--stacked .scene-layer[aria-hidden='true'] { display: none; }
+@keyframes layer-in { from { opacity: 0; transform: scale(0.92); } }
+.scene--stacked .scene-readout { bottom: 96px; }
+.scene--stacked .scene-note { bottom: 72px; left: var(--margin); right: var(--margin); text-align: left; }
+.scene-next {
+  position: absolute;
+  z-index: 3;
+  right: var(--margin);
+  bottom: 88px;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.scene-next:hover { background: rgba(255, 255, 255, 0.2); }
+
+@media (max-width: 760px) {
+  .scene-meta { top: 60px; }
+  .scene-line { justify-self: start; margin-right: 0; }
+  .scene--stacked .scene-readout { bottom: 128px; }
+  .scene--stacked .scene-note { bottom: 150px; }
+  .scene--stacked .scene-layer { padding: 124px var(--margin) 190px; }
+}

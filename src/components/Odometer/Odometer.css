@@ -1,0 +1,4 @@
+.odo { display: inline-flex; white-space: pre; font-variant-numeric: tabular-nums; }
+.odo-d { display: inline-block; height: 1.2em; line-height: 1.2em; overflow: hidden; vertical-align: top; }
+.odo-strip { display: flex; flex-direction: column; transition: transform 1.3s var(--ease-out); }
+.odo-strip > span { height: 1.2em; }

@@ -1,0 +1,4 @@
+.lh-diagram { width: min(1180px, 100%); display: grid; gap: 28px; }
+.lh-fig { display: flex; justify-content: space-between; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.16); }
+.lh-cap { max-width: 52ch; font-size: 15px; line-height: 1.45; color: rgba(255, 255, 255, 0.72); }
+@media (max-width: 760px) { .lh-diagram { gap: 18px; } }
