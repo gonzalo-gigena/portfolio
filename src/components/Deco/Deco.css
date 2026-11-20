@@ -1,0 +1,3 @@
+.deco { position: absolute; pointer-events: none; z-index: -1; }
+.deco.spin { animation: spin-slow 8s linear infinite; }
+@keyframes spin-slow { to { transform: rotate(360deg); } }

@@ -1,0 +1,106 @@
+/* Neobrutalism — Coral & Cream (tokens from SKILL.md) */
+:root {
+  --bg-page: #FAFADF;
+  --bg-surface: #FFFFFF;
+  --color-primary: #E8635A;
+  --color-secondary: #7B6CF6;
+  --color-teal: #4ECDC4;
+  --color-yellow: #FFE566;
+  --color-pink: #F9A8B8;
+  --color-lavender: #C4B5FD;
+  --border-color: #111111;
+  --border: 2px solid var(--border-color);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+  --shadow-sm: 3px 3px 0 0 var(--border-color);
+  --shadow-md: 4px 4px 0 0 var(--border-color);
+  --shadow-lg: 6px 6px 0 0 var(--border-color);
+  --shadow-sm-hover: 1px 1px 0 0 var(--border-color);
+  --shadow-md-hover: 2px 2px 0 0 var(--border-color);
+  --font: 'DM Sans', sans-serif;
+  --text-primary: #111111;
+  --text-secondary: #555555;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font: 400 1rem/1.65 var(--font);
+  overflow-x: clip; /* decorations may poke past the viewport edge */
+}
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--font); color: var(--text-primary); margin: 0; text-transform: lowercase; }
+h1 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.2; }
+h3 { font-size: 1.2rem; font-weight: 700; }
+p { font-size: 0.95rem; line-height: 1.65; color: var(--text-secondary); }
+
+.section { position: relative; max-width: 1100px; margin: 0 auto; padding: 72px 24px; }
+.section-title { margin-bottom: 32px; }
+.section-title span {
+  background: var(--color-yellow);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  padding: 0 12px;
+  box-shadow: var(--shadow-md);
+}
+
+.card {
+  background: var(--bg-surface);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 24px;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.card:hover { transform: translate(2px, 2px); box-shadow: var(--shadow-md-hover); }
+.card-flat { box-shadow: none; }
+.card-flat:hover { box-shadow: var(--shadow-sm); transform: translate(-2px, -2px); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 700 0.95rem var(--font);
+  padding: 12px 24px;
+  background: var(--color-primary);
+  color: var(--text-primary); /* ponytail: guide says white text; #111 kept for WCAG AA contrast on coral */
+  border: var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  cursor: pointer; text-decoration: none; user-select: none;
+  transition: transform .1s ease, box-shadow .1s ease;
+}
+.btn:hover { transform: translate(2px, 2px); box-shadow: var(--shadow-md-hover); }
+.btn:active { transform: translate(4px, 4px); box-shadow: none; }
+.btn:focus-visible { outline: 3px solid var(--color-secondary); outline-offset: 3px; }
+.btn-ghost { background: transparent; }
+.btn-ghost:hover { background: var(--bg-page); }
+.btn-pill { border-radius: var(--radius-pill); padding: 14px 32px; }
+
+.tag {
+  display: inline-flex; align-items: center;
+  padding: 4px 12px;
+  background: var(--bg-surface);
+  border: var(--border);
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem; font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+.tag-filled { background: var(--color-yellow); }
+
+/* scroll reveal — uses `translate` so it never fights the hover `transform` */
+.reveal { transition: opacity .35s ease, translate .35s ease, transform .12s ease, box-shadow .12s ease; }
+.reveal:not(.visible) { opacity: 0; translate: 0 20px; }
+.stagger > :nth-child(2) { transition-delay: 70ms, 70ms, 0ms, 0ms; }
+.stagger > :nth-child(3) { transition-delay: 140ms, 140ms, 0ms, 0ms; }
+.stagger > :nth-child(4) { transition-delay: 210ms, 210ms, 0ms, 0ms; }
+.stagger > :nth-child(5) { transition-delay: 280ms, 280ms, 0ms, 0ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .reveal:not(.visible) { opacity: 1; translate: none; }
+}

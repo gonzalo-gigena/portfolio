@@ -1,0 +1,13 @@
+.hero { display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; align-items: center; padding-top: 80px; }
+.hero h1 { margin: 20px 0; }
+.hero mark { background: var(--color-primary); padding: 0 10px; border: var(--border); border-radius: var(--radius-md); }
+.hero p { font-size: 1.1rem; max-width: 56ch; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 28px; }
+.hero-card { background: var(--color-lavender); display: grid; gap: 14px; rotate: 2deg; box-shadow: var(--shadow-lg); }
+.hero-card:hover { box-shadow: var(--shadow-md); }
+.hero-stat { background: var(--bg-surface); border: var(--border); border-radius: var(--radius-md); padding: 12px 16px; display: flex; align-items: baseline; gap: 10px; }
+.hero-stat b { font-weight: 800; font-size: 1.8rem; }
+@media (max-width: 800px) {
+  .hero { grid-template-columns: 1fr; padding-top: 48px; }
+  .hero-card { rotate: none; }
+}

@@ -1,0 +1,6 @@
+.extras-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+@media (max-width: 700px) { .extras-grid { grid-template-columns: 1fr; } }
+.extra-card h3 { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.extra-dot { width: 28px; height: 28px; border: var(--border); border-radius: 50%; box-shadow: var(--shadow-sm); flex-shrink: 0; }
+.extra-card p { margin: 6px 0; }
+.extra-card .lead { font-weight: 700; color: var(--text-primary); }
