@@ -1,13 +1,163 @@
-.hero { display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; align-items: center; padding-top: 80px; }
-.hero h1 { margin: 20px 0; }
-.hero mark { background: var(--color-primary); padding: 0 10px; border: var(--border); border-radius: var(--radius-md); }
-.hero p { font-size: 1.1rem; max-width: 56ch; }
-.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 28px; }
-.hero-card { background: var(--color-lavender); display: grid; gap: 14px; rotate: 2deg; box-shadow: var(--shadow-lg); }
-.hero-card:hover { box-shadow: var(--shadow-md); }
-.hero-stat { background: var(--bg-surface); border: var(--border); border-radius: var(--radius-md); padding: 12px 16px; display: flex; align-items: baseline; gap: 10px; }
-.hero-stat b { font-weight: 800; font-size: 1.8rem; }
-@media (max-width: 800px) {
-  .hero { grid-template-columns: 1fr; padding-top: 48px; }
-  .hero-card { rotate: none; }
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
+  overflow: hidden;
+  isolation: isolate;
+}
+/* faint lit floor under the deck */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: auto -10% -30% 20%;
+  height: 90%;
+  background: radial-gradient(closest-side, rgba(255,255,255,0.045), transparent 70%);
+  z-index: -1;
+}
+
+.hero-top {
+  width: 100%;
+  padding-top: clamp(96px, 14vh, 150px);
+  display: grid;
+  grid-template-columns: minmax(0, 440px);
+  align-content: start;
+  gap: 22px;
+}
+.hero-statement strong { display: block; font-weight: 500; color: var(--ink); }
+.hero-statement {
+  color: var(--ink-2);
+  font: 500 clamp(20px, 1.7vw, 26px)/1.3 var(--sans);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 8px; }
+.hero-sec { font-weight: 500; }
+
+.hero-bottom { width: 100%; position: relative; z-index: 1; pointer-events: none; }
+.hero-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 10px;
+  pointer-events: auto;
+}
+.hero-links { display: flex; gap: 20px; color: var(--ink); }
+.hero-links a { text-decoration: none; }
+.placeholder { color: var(--ink-2); border-bottom: 1px dashed var(--ink-2); }
+
+.wordmark {
+  display: flex;
+  gap: 0.18em;
+  font: 900 15vw/0.78 var(--display); /* refined by JS fit in Hero.jsx */
+  letter-spacing: -0.015em;
+  margin-bottom: -0.035em;
+  white-space: nowrap;
+}
+.wordmark-word { display: flex; overflow: hidden; padding-block: 0.04em 0.02em; }
+.wordmark-ch { display: inline-block; }
+.js .wordmark-ch { animation: ch-rise 1.3s var(--ease-out) both; animation-delay: calc(var(--d) + 150ms); }
+@keyframes ch-rise { from { transform: translateY(105%); } to { transform: none; } }
+
+/* ---- the deck ---- */
+.deck {
+  --tx: 0;
+  --ty: 0;
+  --w: clamp(190px, 17vw, 270px);
+  position: absolute;
+  left: 58%;
+  bottom: clamp(70px, 11vw, 190px);
+  width: var(--w);
+  aspect-ratio: 3 / 4.1;
+  z-index: 2;
+  perspective: 1400px;
+  transform: translateX(-50%);
+}
+.deck-card {
+  --rot: calc((var(--i) - 1) * 9deg);
+  --off: calc((var(--i) - 1) * 62%);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  gap: 10px;
+  text-decoration: none;
+  transform-origin: 50% 120%;
+  transform:
+    translateX(calc(var(--off) * (1 + var(--spread) * 0.55) + var(--tx) * 24px))
+    translateY(calc(var(--ty) * 14px))
+    rotate(calc(var(--rot) * (1 + var(--spread) * 1.4) + var(--tx) * 4deg))
+    rotateY(calc(var(--tx) * 10deg)) rotateX(calc(var(--ty) * -8deg));
+  transition: transform 0.9s var(--ease-out), border-color 0.4s, box-shadow 0.6s;
+  z-index: 1;
+}
+.deck-card--0 { --off: 0%; --rot: -1.5deg; z-index: 3; }
+.deck-card--1 { --off: -70%; --rot: -8deg; }
+.deck-card--2 { --off: 70%; --rot: 8deg; }
+.deck-card--2 .deck-title, .deck-card--2 .deck-meta { text-align: right; }
+.deck-card:hover, .deck-card:focus-visible {
+  border-color: #444;
+  box-shadow: 0 50px 80px -30px rgba(0,0,0,0.95);
+  transform: translateX(var(--off)) translateY(-8%) rotate(calc(var(--rot) * 0.5));
+  z-index: 5;
+}
+.deck-head { display: flex; justify-content: space-between; font-size: 10px; }
+.deck-live { color: var(--live); }
+.deck-viz { flex: 1; display: grid; place-items: center; border-block: 1px solid var(--rule); padding: 8px 0; min-height: 0; }
+.deck-viz figure { width: 112%; }
+.deck-title { font: 800 clamp(26px, 2.3vw, 36px)/0.9 var(--display); text-transform: uppercase; color: var(--ink); }
+.deck-meta { font-size: 10px; }
+
+/* the deal: cards fly in from below, one after another, after the name has risen */
+.js .deck-card { animation: deal 1.2s var(--ease-out) both; animation-delay: calc(700ms + (2 - var(--i)) * 140ms); }
+@keyframes deal {
+  from { transform: translate(-30%, 120vh) rotate(-30deg); }
+}
+
+@media (max-width: 760px) {
+  .hero { grid-template-rows: auto 1fr auto; }
+  .hero-top { padding-top: 92px; }
+  .deck {
+    position: relative;
+    left: auto; bottom: auto;
+    transform: none;
+    margin: 28px auto 8px;
+    --w: 40vw;
+  }
+  .deck-card--1 { --off: -52%; }
+  .deck-card--2 { --off: 52%; }
+  .deck-title { font-size: 22px; }
+  .deck-meta { display: none; }
+  .wordmark { flex-direction: column; align-items: flex-start; gap: 0; }
+  .hero-meta { flex-direction: column; gap: 6px; }
+}
+
+/* intro hand-off (see Loader): hold the hero until the count finishes, then
+   card No.01 is delivered by the loader instead of being dealt */
+html.intro .wordmark-ch, html.intro .deck-card { animation-play-state: paused; }
+html.intro-dealt .deck-card--0 { animation: none; }
+html.intro-hand .deck-card--0 { opacity: 0; }
+
+/* scroll-out: the deck lifts and fans open faster than the name sinks (Möbius-style parallax) */
+@property --spread { syntax: '<number>'; inherits: true; initial-value: 0; }
+@supports (animation-timeline: scroll()) {
+  .deck, .wordmark, .hero-top {
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: scroll(root);
+    animation-range: 0 100svh;
+  }
+  .deck { animation-name: deck-lift; }
+  .wordmark { animation-name: mark-sink; }
+  .hero-top { animation-name: top-fade; }
+  @keyframes deck-lift { to { translate: 0 -22vh; --spread: 1; } }
+  @keyframes mark-sink { to { translate: 0 12vh; } }
+  @keyframes top-fade { to { opacity: 0; translate: 0 -8vh; } }
+}
+.hero-xy { font-variant-numeric: tabular-nums; }
+@media (pointer: coarse) { .hero-xy { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .deck, .wordmark, .hero-top { animation: none !important; }
 }

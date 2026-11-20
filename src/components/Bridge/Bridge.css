@@ -1,0 +1,35 @@
+.br { margin: 0; width: 100%; }
+.br svg { width: 100%; height: auto; overflow: visible; }
+
+.br-orbit { fill: none; stroke: #232323; stroke-dasharray: 2 6; }
+.br-orbit--outer { stroke: #1a1a1a; animation: br-spin 60s linear infinite; transform-origin: 400px 190px; }
+
+.br-zone { outline: none; }
+.br-zone > rect { fill: #121212; stroke: #333; stroke-width: 1.2; transition: stroke 0.4s, fill 0.4s; }
+.br-zone.is-live > rect { stroke: var(--live); fill: #151a0b; }
+.br-zone:focus-visible > rect { stroke-width: 2.5; }
+.br-block { fill: #1d1d1d !important; stroke: #2c2c2c !important; }
+
+.br-label { font: 600 13px var(--mono); font-stretch: 85%; fill: var(--ink); text-transform: uppercase; letter-spacing: 0.04em; }
+.br-span { fill: none; stroke: var(--live); stroke-width: 1.5; }
+
+.br-node { fill: #121212; stroke: var(--ink-2); stroke-width: 1.2; transition: fill 0.3s, stroke 0.3s; }
+.br-node.is-reporting { stroke: var(--live); fill: #1a2209; }
+.br-node.is-lag { stroke: var(--ink-3); stroke-dasharray: 3 3; }
+.br-node-id { font: 500 9px var(--mono); fill: var(--ink-2); pointer-events: none; }
+.br-zone.is-live .br-node:not(.is-lag) { stroke: var(--ink); }
+.br-zone.is-live .br-node.is-reporting { stroke: var(--live); }
+
+.br-report { stroke: var(--live); stroke-width: 1; stroke-dasharray: 3 4; animation: br-dash 0.9s linear; }
+.br-check { fill: #222 !important; stroke: #3a3a3a !important; transition: fill 0.3s; }
+.br-check.is-on { fill: var(--live) !important; stroke: var(--live) !important; }
+
+.br-packet { fill: var(--live); animation: br-flow 3.3s var(--ease-out) infinite; }
+.br.is-paused * { animation-play-state: paused !important; }
+.br-disclaim { font-style: normal; color: var(--ink-3); }
+
+@keyframes br-flow { from { offset-distance: 0%; opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } to { offset-distance: 100%; opacity: 0; } }
+@keyframes br-spin { to { transform: rotate(360deg); } }
+@keyframes br-dash { from { stroke-dashoffset: 40; } to { stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: reduce) { .br-packet { display: none; } }

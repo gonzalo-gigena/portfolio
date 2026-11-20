@@ -1,0 +1,28 @@
+.note {
+  padding-block: clamp(160px, 20vw, 280px);
+  display: grid;
+  justify-items: center;
+}
+.note-text {
+  max-width: 30ch;
+  font: 500 clamp(28px, 3.4vw, 50px)/1.18 var(--sans);
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+  color: var(--ink-2);
+}
+.note-text em { font-style: italic; color: var(--ink); }
+.note-w { display: inline-block; white-space: pre; }
+
+/* manifesto assembles from scattered words as it scrolls into place */
+@supports (animation-timeline: view()) {
+  .note-w {
+    animation: assemble linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 45%;
+  }
+  @keyframes assemble {
+    from { translate: var(--dx) var(--dy); rotate: var(--r); opacity: 0.08; }
+    70% { opacity: 1; }
+  }
+}
+@media (prefers-reduced-motion: reduce) { .note-w { animation: none !important; } }

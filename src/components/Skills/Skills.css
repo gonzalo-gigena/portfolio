@@ -1,5 +1,0 @@
-.skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-@media (max-width: 700px) { .skills-grid { grid-template-columns: 1fr; } }
-.skill-card h3 { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.skill-dot { width: 28px; height: 28px; border: var(--border); border-radius: 50%; box-shadow: var(--shadow-sm); flex-shrink: 0; }
-.skill-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }

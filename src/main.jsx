@@ -1,32 +1,39 @@
 import React, { useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
+import './scroll.js'
+import Loader from './components/Loader/Loader.jsx'
 import Nav from './components/Nav/Nav.jsx'
 import Hero from './components/Hero/Hero.jsx'
-import Skills from './components/Skills/Skills.jsx'
-import Experience from './components/Experience/Experience.jsx'
-import Extras from './components/Extras/Extras.jsx'
-import Contact from './components/Contact/Contact.jsx'
+import Series from './components/Series/Series.jsx'
+import Bill from './components/Bill/Bill.jsx'
+import Rail from './components/Rail/Rail.jsx'
+import Note from './components/Note/Note.jsx'
+import Slot from './components/Slot/Slot.jsx'
+
+document.documentElement.classList.add('js')
 
 function App() {
-  // Scroll reveal: children have mounted by the time this runs
   useEffect(() => {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target) } })
-    }, { threshold: 0.12 })
-    document.querySelectorAll('.reveal').forEach((el) => io.observe(el))
+      for (const e of entries) if (e.isIntersecting) { e.target.dataset.in = ''; io.unobserve(e.target) }
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' })
+    document.querySelectorAll('.rise').forEach((el) => io.observe(el))
     return () => io.disconnect()
   }, [])
 
   return (
     <>
+      <Loader />
+      <a className="skip mono" href="#work">Skip to work</a>
       <Nav />
       <main>
         <Hero />
-        <Skills />
-        <Experience />
-        <Extras />
-        <Contact />
+        <Series />
+        <Bill />
+        <Rail />
+        <Note />
+        <Slot />
       </main>
     </>
   )
