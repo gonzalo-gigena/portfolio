@@ -1,6 +1,5 @@
 import './Hero.css'
 import PixelName from '../PixelName/PixelName.jsx'
-import Plate from '../Plate/Plate.jsx'
 import Arrow from '../Arrow/Arrow.jsx'
 import { hero } from './hero.data.js'
 import { links } from '../../links.js'
@@ -23,7 +22,6 @@ export default function Hero() {
         </ul>
         <p className="hero-stack mono dim">{hero.stack}</p>
       </div>
-      <Plate />
     </section>
   )
 }
