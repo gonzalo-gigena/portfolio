@@ -39,7 +39,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-variant-numeric: tabular-nums;
-  overflow-x: clip;
 }
 *, *::before, *::after { box-sizing: border-box; }
 h1, h2, h3, h4, p, ul, ol, figure, dl, dd { margin: 0; padding: 0; }
